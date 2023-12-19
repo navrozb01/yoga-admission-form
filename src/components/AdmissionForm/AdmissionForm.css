@@ -1,0 +1,58 @@
+/* AdmissionForm.css */
+
+.admission-form-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 10px;
+  }
+  
+  input,
+  button {
+    margin-bottom: 15px;
+    padding: 8px;
+  }
+  
+  .submit-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #45a049;
+  }
+  
+  .error-message {
+    color: #ff0000;
+    margin-top: 10px;
+  }
+  
+  .payment-status {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .payment-status.success {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .payment-status.failure {
+    background-color: #f44336;
+    color: white;
+  }
+  
