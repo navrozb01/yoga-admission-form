@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# Yoga Class Admission Form Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a web application for handling admission forms for Yoga classes. It allows users to submit their details, choose a batch, and make monthly payments.
 
-## Available Scripts
+## Project Structure
 
-In the project directory, you can run:
+### Frontend (React)
 
-### `npm start`
+#### Folder Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The frontend follows a modular structure:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- `src/components`: Contains React components.
+- `src/api`: Includes API interaction functions.
+- `src/utils`: Holds utility functions.
 
-### `npm test`
+#### Key Files
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `src/components/AdmissionForm`: Main component for the admission form.
+- `src/api/api.js`: API interaction functions.
+- `src/utils/validation.js`: Validation functions.
 
-### `npm run build`
+### Backend (Node.js with Express)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Folder Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The backend follows a simplea structure:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `yoga-admission-form/server/server.js`: Contains erverything related to backend.
 
-### `npm run eject`
+## Assumptions
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Monthly Fee:**
+   - A fixed monthly fee of 500 INR is assumed.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Batch Shifting:**
+   - Users can shift between batches each month but are restricted from changes within the same month.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Payment Processing:**
+   - A mock function named `CompletePayment()` is assumed for payment processing.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Age Limit:**
+   - Enrollment is restricted to individuals aged between 18 and 65.
 
-## Learn More
+5. **Database:**
+   - SQLite is chosen for simplicity in the local environment.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Getting Started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **Frontend:**
+   - Navigate to the `yoga-admission-form` directory and run `npm install`.
+   - Run `npm start` to start the development server.
 
-### Code Splitting
+2. **Backend:**
+   - Navigate to the `yoga-admission-form/server` directory and run `npm install`.
+   - Run `node serve.js` to start the Express server.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. **Database:**
+   - Ensure SQLite is installed for local development. The database file is named `yoga.db`.
 
-### Analyzing the Bundle Size
+4. **API Endpoint:**
+   - Update the API endpoint in the frontend code (e.g., `src/api/api.js`) based on your backend deployment.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Future Improvements
 
-### Making a Progressive Web App
+- Implement user authentication for more secure data handling.
+- Enhance styling and user interface for a better user experience.
+- Integrate with a production-grade database for scalability.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Feel free to contribute or open issues for any suggestions or improvements.
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
