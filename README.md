@@ -28,6 +28,10 @@ The backend follows a simplea structure:
 
 - `yoga-admission-form/server/server.js`: Contains erverything related to backend.
 
+### ER Diagram
+
+- `yoga-admission-form.drawio`
+
 ## Assumptions
 
 1. **Monthly Fee:**
