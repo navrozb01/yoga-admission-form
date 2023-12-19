@@ -20,7 +20,7 @@ The frontend follows a modular structure:
 - `src/api/api.js`: API interaction functions.
 - `src/utils/validation.js`: Validation functions.
 
-### Backend (Node.js with Express)
+### Backend (Node.js)
 
 #### Folder Structure
 
