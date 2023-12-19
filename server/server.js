@@ -32,57 +32,32 @@ db.run(`
 app.use(express.json());
 
 // Endpoint to register a user
-// Endpoint to register a user
-app.post('/register', async (req, res) => {
-  try {
-    const { name, age, batch } = req.body;
-    const dateOfJoining = new Date().toISOString().split('T')[0]; // Get the current date
-    const monthlyFeePaid = true;
+app.post('/register', (req, res) => {
+  const { name, age, batch } = req.body;
+  const dateOfJoining = new Date().toISOString().split('T')[0]; // Get the current date
 
-    // Check if a user with the same name and month already exists
-    const existingUser = await getUserByNameAndMonth(name, dateOfJoining);
+  // Set monthly_fee_paid to true since the user is registering
+  const monthlyFeePaid = true;
 
-    if (existingUser) {
-      // User already exists for the current month
-      return res.status(400).json({ success: false, message: 'Duplicate form submission for the current month' });
-    }
+  const stmt = db.prepare(`
+  INSERT INTO users (name, age, batch, date_of_joining, monthly_fee_paid)
+  VALUES (?, ?, ?, ?, ?)
+`);
 
-    const stmt = db.prepare(`
-      INSERT INTO users (name, age, batch, date_of_joining, monthly_fee_paid)
-      VALUES (?, ?, ?, ?, ?)
-    `);
-
-    stmt.run(name, age, batch, dateOfJoining, monthlyFeePaid, (err) => {
-      if (err) {
-        console.error('Error inserting user into the database:', err.message);
-        res.status(500).json({ success: false, message: 'Error registering user' });
-      } else {
-        res.json({ success: true, message: 'User registered successfully' });
-      }
-    });
-
-    stmt.finalize();
-  } catch (error) {
-    console.error('Error processing form submission:', error.message);
-    res.status(500).json({ success: false, message: 'Error processing form submission' });
+stmt.run(name, age, batch, dateOfJoining, monthlyFeePaid, (err) => {
+  if (err) {
+    console.error('Error inserting user into the database:', err.message);
+    res.status(500).json({ success: false, message: 'Error registering user' });
+  } else {
+    res.json({ success: true, message: 'User registered successfully' });
   }
 });
 
-// Function to get a user by name and month
-const getUserByNameAndMonth = (name, month) => {
-  return new Promise((resolve, reject) => {
-    const query = 'SELECT * FROM users WHERE name = ? AND strftime("%Y-%m", date_of_joining) = ?';
-
-    db.get(query, [name, month], (err, row) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(row);
-      }
-    });
-  });
-};
-
+stmt.finalize();
+});
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
 
 process.on('SIGINT', () => {
   // Close the database connection when the server is terminated
