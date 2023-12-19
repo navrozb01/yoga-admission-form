@@ -31,6 +31,8 @@ The backend follows a simplea structure:
 ### ER Diagram
 
 - `yoga-admission-form.drawio`
+  
+![Screenshot (46)](https://github.com/navrozb01/yoga-admission-form/assets/96216861/89920028-5326-4486-81ab-49c0f5ea635c)
 
 ## Assumptions
 
